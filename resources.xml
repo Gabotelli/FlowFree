@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UFT-8"?>
+<gresources>
+	<gresource prefix="/gui">
+		<file preprocess="xml-stripblanks">src-exe/Flow.glade</file>
+	</gresource>
+</gresources>
