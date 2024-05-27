@@ -8,7 +8,7 @@ module Main where
 import Control.Monad
 import qualified GI.Gtk as Gtk
 import Data.GI.Base
-import Data.Array (Array, assocs, bounds, listArray)
+import Data.Array
 import Data.List (sort, sortBy)
 import Data.Ord (comparing)
 import Debug.Trace (traceShow)
@@ -169,63 +169,70 @@ generateValidBoard matrix count = do
     else generateValidBoard matrix (count + 1)
 
 
-parseTabla :: String -> Maybe (Array (Int, Int) Int)
-parseTabla str = do
+parseTablero :: String -> Maybe (Array (Int, Int) Int)
+parseTablero str = do
   let parse = map (map read . words) (filter (not . null) $ lines str) :: [[Int]]
-  let (dim : tablero) = parse
-  if length dim /= 2
+  let (dimensiones : tablero) = parse
+  if length dimensiones /= 2
     then Nothing
     else do
-      let f = head dim
-      let c = dim !! 1
+      let filas = head dimensiones
+      let columnas = dimensiones !! 1
       let tablero_aux = concat tablero
-      if null tablero || length tablero_aux /= f * c
+      if null tablero || length tablero_aux /= filas * columnas
         then Nothing
         else do
-          return $ listArray ((1, 1), (f, c)) tablero_aux
+          return $ listArray ((1, 1), (filas, columnas)) tablero_aux
 
-tableroValido :: Array (Int, Int) Int -> Maybe [(Int, (Int, Int), (Int, Int))]
-tableroValido t = do
-  let p = sortBy (comparing snd) (filter (\(pos, num) -> num /= 0) (assocs t))
-  let (f, c) = snd (bounds t)
-  if (length p <= f + c) && repetido (map snd p)
-    then Just $ Main.union p
+esTableroValido :: Array (Int, Int) Int -> Maybe [(Int, (Int, Int), (Int, Int))]
+esTableroValido tablero = do
+  let posiciones = sortBy (comparing snd) (filter (\(pos, num) -> num /= 0) (assocs tablero))
+  let (filas, columnas) = snd (bounds tablero)
+  if (length posiciones <= filas + columnas) && dosVeces (map snd posiciones)
+    then Just $ Main.union posiciones
     else Nothing
 
-repetido :: [Int] -> Bool
-repetido [] = True
-repetido [_] = False
-repetido (x : y : z) = x == y && repetido z
+dosVeces :: [Int] -> Bool
+dosVeces [] = True
+dosVeces [_] = False
+dosVeces [x, y] = x == y
+dosVeces (x : y : z : l) = x == y && x /= z && dosVeces (z : l)
 
 union :: [((Int, Int), Int)] -> [(Int, (Int, Int), (Int, Int))]
 union [] = []
 union ((pos1, num) : (pos2, _) : x) = (num, pos1, pos2) : Main.union x
 
+listaArray :: Array (Int, Int) Int -> [[Int]]
+listaArray tablero = do
+  let (filas, columnas) = snd (bounds tablero)
+  [[tablero! (x, y) | y <- [1.. columnas]] | x <- [1.. filas]]
+
 main :: IO ()
 main = do
-	argumento <- getContents
-	let tablero = parseTabla argumento
-	case tablero of
-		Nothing -> putStrLn "Tabla no válida"
-		Just tablero -> do
-			let valido = tableroValido tablero
-			case valido of
-				Nothing -> putStrLn "Tabla no válida"
-				Just valido -> putStrLn "Tabla no válida"
-	let count = 0
-	solution <- generateValidBoard exampleBoard5 count
-	mainWith (board solution)
-	Gtk.init Nothing
+  argumento <- getContents
+  let tablero = parseTablero argumento
+  case tablero of
+    Nothing -> putStrLn "El argumento no es un tablero válido"
+    Just tablero -> do
+      let tableroValido = esTableroValido tablero
+      case tableroValido of
+        Nothing -> putStrLn "El argumento no es un tablero válido"
+        Just tableroValido -> do
+          putStrLn "El argumento es un tablero válido"
+          let count = 0
+          solution <- generateValidBoard (listaArray tablero) count
+          mainWith (board solution)
+          Gtk.init Nothing
 
-	builder <- Gtk.builderNewFromFile "src-exe/Flow.glade"
-	
-	windowObj <- Gtk.builderGetObject builder "App"
-	window <- case windowObj of
-		Nothing -> error "No se pudo encontrar el objeto 'App'"
-		Just obj -> Gtk.unsafeCastTo Gtk.Window obj
+          builder <- Gtk.builderNewFromFile "src-exe/Flow.glade"
+          
+          windowObj <- Gtk.builderGetObject builder "App"
+          window <- case windowObj of
+            Nothing -> error "No se pudo encontrar el objeto 'App'"
+            Just obj -> Gtk.unsafeCastTo Gtk.Window obj
 
-	Gtk.on window #destroy Gtk.mainQuit
+          Gtk.on window #destroy Gtk.mainQuit
 
-	#showAll window
+          #showAll window
 
-	Gtk.main
+          Gtk.main
