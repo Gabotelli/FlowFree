@@ -9,7 +9,7 @@ import Control.Monad
 import qualified GI.Gtk as Gtk
 import Data.GI.Base
 import Data.Array
-import Data.List (sort, sortBy)
+import Data.List (sort, sortBy, subsequences)
 import Data.Ord (comparing)
 import Debug.Trace (traceShow)
 import System.Environment (getArgs)
@@ -18,10 +18,11 @@ import Diagrams.Backend.SVG.CmdLine
 import Diagrams.Prelude 
 import System.Random (randomRIO)
 import Control.Monad.State
+import Surely (solve)
 
 data Color1 = Black | Red | Blue | Green | Yellow | Purple | Orange | LightBlue | Cyan | Magenta | Pink | Turquoise | Lavender | Coral | White
   deriving (Eq, Show)
-
+-- Los numeros 20 al 34 se reservan para los interiores de los caminos del color n-20
 -- Función para convertir un número a un Color1
 intToColor :: Int -> Color1
 intToColor 0 = Black
@@ -74,68 +75,14 @@ row nums size = hcat (map (\n -> cell n size) nums)
 
 -- Función para obtener el tamaño del tablero
 boardSize :: Int
-boardSize = length exampleBoard
+--boardSize = length exampleBoard
+boardSize = 16
 
 -- Función para dibujar un tablero completo
 board :: [[Int]] -> Diagram B
 board nums = vcat (map (\r -> row r size) nums)
   where
     size = 10 -- tamaño base del tablero
-
--- Ejemplo de un tablero 8x8 con números asignados
-exampleBoard2 :: [[Int]]
-exampleBoard2 =
-  [ [3, 1, 0, 0, 7, 0, 0, 7],
-    [0, 0, 3, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 5, 0, 0, 0],
-    [0, 0, 2, 0, 0, 0, 0, 0],
-    [0, 0, 4, 0, 0, 0, 0, 0],
-    [0, 0, 0, 2, 4, 6, 0, 0],
-    [6, 0, 0, 0, 0, 0, 0, 0],
-    [5, 0, 1, 0, 0, 0, 0, 0]
-  ]
-
-exampleBoard :: [[Int]]
-exampleBoard =
-  [ [12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 4, 0, 0],
-    [0, 0, 0, 0, 0, 14, 0, 0, 1, 0, 0, 1, 5, 0],
-    [0, 6, 0, 0, 0, 9, 12, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 4, 7, 0, 0, 8, 0, 0, 3, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 14, 0, 11, 0, 10, 13, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 5, 0, 0],
-    [0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-  ]
-
-exampleBoard3 :: [[Int]]
-exampleBoard3 =
-  [ [1, 0, 3, 0, 4],
-    [0, 0, 2, 0, 5],
-    [0, 0, 0, 0, 0],
-    [0, 3, 0, 4, 0],
-    [0, 1, 2, 5, 0]
-  ]
-
-exampleBoard4 :: [[Int]]
-exampleBoard4 =
-  [ [0, 0, 1, 4],
-    [0, 2, 3, 0],
-    [1, 0, 0, 0],
-    [2, 0, 3, 4]
-  ]
-
-exampleBoard5 :: [[Int]]
-exampleBoard5 =
-  [ [0, 1, 3],
-    [0, 2, 0],
-    [1, 2, 3]
-  ]
 
 fillRandom :: [[Int]] -> IO [[Int]]
 fillRandom = mapM (mapM fillCell)
@@ -207,6 +154,32 @@ listaArray tablero = do
   let (filas, columnas) = snd (bounds tablero)
   [[tablero! (x, y) | y <- [1.. columnas]] | x <- [1.. filas]]
 
+vecinos :: (Int, Int) -> Array (Int, Int) Int -> [(Int, Int)]
+vecinos (x, y) tablero = filter (inRange (bounds tablero)) [(x-1, y), (x+1, y), (x, y-1), (x, y+1)]
+
+clausulaCeldaColor :: (Int, Int) -> Array (Int, Int) Int -> [[Int]]
+clausulaCeldaColor (x, y) tablero = if esCeldaFinal
+                                   then [[celdaFinal]] ++ notOtherColorsClauses ++ neighborClauses
+                                   else [colorClauses] ++ notTwoColorsClauses
+  where
+    ((_, _), (numFilas, _)) = bounds tablero
+    colorClauses = map (\i -> x * y * numFilas + i) [1..numFilas]
+    notTwoColorsClauses = [ [-u, -v] | [u, v] <- combinations 2 colorClauses ]
+    esCeldaFinal = tablero ! (x, y) /= 0
+    celdaFinal = x * y * numFilas + tablero ! (x, y)
+    notOtherColorsClauses = map (\i -> [-i]) $ filter (/= celdaFinal) colorClauses
+    neighborColors = [1..numFilas] -- Aquí necesitas definir neighborColors
+    neighborClauses = [ [-u, -v] | [u, v] <- filter ((2==) . length) (combinations 2 neighborColors) ]
+
+combinations :: Int -> [a] -> [[a]]
+combinations n xs = filter ((n==) . length) (subsequences xs)
+
+clausulasColor :: Array (Int, Int) Int -> [[Int]]
+clausulasColor tablero = concatMap (\(x, _) -> clausulaCeldaColor x tablero) (assocs tablero)
+
+convertirAInteger :: [[Int]] -> [[Integer]]
+convertirAInteger = map (map fromIntegral)
+
 main :: IO ()
 main = do
   argumento <- getContents
@@ -219,6 +192,8 @@ main = do
         Nothing -> putStrLn "El argumento no es un tablero válido"
         Just tableroValido -> do
           putStrLn "El argumento es un tablero válido"
+          let clausulas = clausulasColor tablero
+          print (solve (convertirAInteger clausulas))
           let count = 0
           solution <- generateValidBoard (listaArray tablero) count
           mainWith (board solution)

@@ -132,6 +132,17 @@
   (major1) == 0 && (major2) == 26 && (minor) <= 4)
 #endif /* MIN_VERSION_haskell_gi_base */
 
+/* package monad-par-0.3.6 */
+#ifndef VERSION_monad_par
+#define VERSION_monad_par "0.3.6"
+#endif /* VERSION_monad_par */
+#ifndef MIN_VERSION_monad_par
+#define MIN_VERSION_monad_par(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  3 || \
+  (major1) == 0 && (major2) == 3 && (minor) <= 6)
+#endif /* MIN_VERSION_monad_par */
+
 /* package mtl-2.2.2 */
 #ifndef VERSION_mtl
 #define VERSION_mtl "2.2.2"
