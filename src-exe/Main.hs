@@ -9,8 +9,8 @@ import Control.Monad
 import qualified GI.Gtk as Gtk
 import Data.GI.Base
 import Data.Array
-import Data.List (sort, sortBy, subsequences)
-import Data.Ord (comparing)
+import Data.List (sort, sortBy, subsequences, sortOn, findIndices, findIndex)
+import Data.Ord (comparing, Down)
 import Debug.Trace (traceShow)
 import System.Environment (getArgs)
 import Diagrams.Backend.SVG
@@ -157,28 +157,51 @@ listaArray tablero = do
 vecinos :: (Int, Int) -> Array (Int, Int) Int -> [(Int, Int)]
 vecinos (x, y) tablero = filter (inRange (bounds tablero)) [(x-1, y), (x+1, y), (x, y-1), (x, y+1)]
 
-clausulaCeldaColor :: (Int, Int) -> Array (Int, Int) Int -> [[Int]]
-clausulaCeldaColor (x, y) tablero = if esCeldaFinal
-                                   then [[celdaFinal]] ++ notOtherColorsClauses ++ neighborClauses
-                                   else [colorClauses] ++ notTwoColorsClauses
+clausulaCelda :: (Int, Int) -> Array (Int, Int) Int -> [[Int]]
+clausulaCelda (x, y) tablero = if esCeldaFinal
+                                  then [[celdaFinal]] ++ notOtherColorsClauses ++ [neighborColors] ++ neighborClauses
+                                  else [colorClauses] ++ notTwoColorsClauses
   where
     ((_, _), (numFilas, _)) = bounds tablero
-    colorClauses = map (\i -> x * y * numFilas + i) [1..numFilas]
+    colorClauses = [(x * numFilas + y) * numFilas + i - ((numFilas * numFilas) + numFilas) | i <- [1..numFilas]]
     notTwoColorsClauses = [ [-u, -v] | [u, v] <- combinations 2 colorClauses ]
     esCeldaFinal = tablero ! (x, y) /= 0
-    celdaFinal = x * y * numFilas + tablero ! (x, y)
+    celdaFinal = (x * numFilas + y) * numFilas + tablero ! (x, y) - ((numFilas * numFilas) + numFilas)
     notOtherColorsClauses = map (\i -> [-i]) $ filter (/= celdaFinal) colorClauses
-    neighborColors = [1..numFilas] -- Aquí necesitas definir neighborColors
+    neighborColors = [ color | (dx, dy) <- [(-1, 0), (1, 0), (0, -1), (0, 1)], 
+                   let nx = x + dx, 
+                   let ny = y + dy, 
+                   nx >= 1, nx <= numFilas, 
+                   ny >= 1, ny <= numFilas, 
+                   let color = (nx * numFilas + ny) * numFilas + (tablero ! (x, y)) - ((numFilas * numFilas) + numFilas) ]
     neighborClauses = [ [-u, -v] | [u, v] <- filter ((2==) . length) (combinations 2 neighborColors) ]
+    pipeClauses = [ (x * numFilas + y) * numFilas + i - ((numFilas * numFilas) + numFilas) | i <- [1..6]]
 
 combinations :: Int -> [a] -> [[a]]
 combinations n xs = filter ((n==) . length) (subsequences xs)
 
 clausulasColor :: Array (Int, Int) Int -> [[Int]]
-clausulasColor tablero = concatMap (\(x, _) -> clausulaCeldaColor x tablero) (assocs tablero)
+clausulasColor tablero = concatMap (\(x, _) -> clausulaCelda x tablero) (assocs tablero)
 
 convertirAInteger :: [[Int]] -> [[Integer]]
 convertirAInteger = map (map fromIntegral)
+
+ordenarPorValorAbsoluto :: [Int] -> [Int]
+ordenarPorValorAbsoluto = sortOn abs
+
+splitEvery :: Int -> [a] -> [[a]]
+splitEvery _ [] = []
+splitEvery n xs = take n xs : splitEvery n (drop n xs)
+
+colorMatrix :: [[Int]] -> [Int]
+colorMatrix xs = map colorCell xs
+  where
+    colorCell sublist = case findIndex (>0) sublist of
+                          Just idx -> idx + 1
+                          Nothing  -> error "No positive number found in sublist"
+
+convertirAIO :: [[Int]] -> IO [[Int]]
+convertirAIO x = return x
 
 main :: IO ()
 main = do
@@ -193,10 +216,18 @@ main = do
         Just tableroValido -> do
           putStrLn "El argumento es un tablero válido"
           let clausulas = clausulasColor tablero
-          print (solve (convertirAInteger clausulas))
-          let count = 0
-          solution <- generateValidBoard (listaArray tablero) count
-          mainWith (board solution)
+          let ((_, _), (numFilas, _)) = bounds (tablero)
+          let solucion = case solve (convertirAInteger clausulas) of
+                  Just val -> ordenarPorValorAbsoluto (map fromIntegral val)
+                  Nothing  -> []
+          let solucionAgrupada = splitEvery numFilas solucion
+          print (solucionAgrupada)
+          --let count = 0
+          let solution = splitEvery numFilas (colorMatrix (solucionAgrupada))
+          solutionIO <- convertirAIO solution
+          --solution <- splitEvery numFilas (colorMatrix (solucionAgrupada))
+          print (solution)
+          mainWith (board solutionIO)
           Gtk.init Nothing
 
           builder <- Gtk.builderNewFromFile "src-exe/Flow.glade"
