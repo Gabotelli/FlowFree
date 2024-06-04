@@ -44,6 +44,17 @@
   (major1) == 3 && (major2) == 10 && (minor) <= 3)
 #endif /* MIN_VERSION_cabal_install */
 
+/* package deepseq-1.4.4.0 */
+#ifndef VERSION_deepseq
+#define VERSION_deepseq "1.4.4.0"
+#endif /* VERSION_deepseq */
+#ifndef MIN_VERSION_deepseq
+#define MIN_VERSION_deepseq(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  4 || \
+  (major1) == 1 && (major2) == 4 && (minor) <= 4)
+#endif /* MIN_VERSION_deepseq */
+
 /* package diagrams-1.4.1 */
 #ifndef VERSION_diagrams
 #define VERSION_diagrams "1.4.1"

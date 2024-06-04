@@ -19,6 +19,9 @@ import Diagrams.Prelude
 import System.Random (randomRIO)
 import Control.Monad.State
 import Surely (solve)
+import Data.Text (unpack, pack)
+import System.IO
+import Control.DeepSeq (deepseq)
 
 data Color1 = Black | Red | Blue | Green | Yellow | Purple | Orange | LightBlue | Cyan | Magenta | Pink | Turquoise | Lavender | Coral | White
   deriving (Eq, Show)
@@ -264,41 +267,61 @@ colorMatrix xs = map colorCell xs
 convertirAIO :: [[Int]] -> IO [[Int]]
 convertirAIO x = return x
 
-main :: IO ()
-main = do
-  argumento <- getContents
-  let tablero = parseTablero argumento
+resolver :: [Char] -> IO()
+resolver tab = do
+  let tablero = parseTablero tab
   case tablero of
-    Nothing -> putStrLn "El argumento no es un tablero válido"
+    Nothing -> putStrLn "Error fichero"
     Just tablero -> do
       let tableroValido = esTableroValido tablero
       case tableroValido of
-        Nothing -> putStrLn "El argumento no es un tablero válido"
+        Nothing -> putStrLn "Tablero inválido"
         Just tableroValido -> do
-          putStrLn "El argumento es un tablero válido"
           let clausulas = clausulasColor tablero
-          print (clausulas)
+          --print (clausulas)
           let ((_, _), (numFilas, _)) = bounds (tablero)
           let solucion = case solve (convertirAInteger clausulas) of
                   Just val -> ordenarPorValorAbsoluto (map fromIntegral val)
                   Nothing  -> []
-          print(solucion)
+          --print(solucion)
           let solucionAgrupada = take (numFilas * numFilas) (splitEvery numFilas solucion)
-          print (solucionAgrupada)
+          --print (solucionAgrupada)
           --let count = 0
           let solution = splitEvery numFilas (colorMatrix (solucionAgrupada))
           solutionIO <- convertirAIO solution
           --solution <- splitEvery numFilas (colorMatrix (solucionAgrupada))
-          print (solution)
+          --print (solution)
           mainWith (board solutionIO)
+
+main :: IO ()
+main = do
           Gtk.init Nothing
 
-          builder <- Gtk.builderNewFromFile "src-exe/Flow.glade"
-          
-          windowObj <- Gtk.builderGetObject builder "App"
+          builder <- Gtk.builderNewFromFile "src-exe/Flow1.glade"
+          buscarButtonObj <- Gtk.builderGetObject builder "buscar"
+          buscarButton <- case buscarButtonObj of
+              Nothing -> error "No se pudo encontrar el objeto 'buscar'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Button obj
+          nombreArchivoEntryObj <- Gtk.builderGetObject builder "nombreArchivo"
+          nombreArchivoEntry <- case nombreArchivoEntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'nombreArchivo'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          resultadoImageObj <- Gtk.builderGetObject builder "resultado"
+          resultadoImage <- case resultadoImageObj of
+              Nothing -> error "No se pudo encontrar el objeto 'resultado'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Image obj
+          windowObj <- Gtk.builderGetObject builder "FlowFree"
           window <- case windowObj of
             Nothing -> error "No se pudo encontrar el objeto 'App'"
             Just obj -> Gtk.unsafeCastTo Gtk.Window obj
+
+          Gtk.on buscarButton #clicked $ do
+              texto <- Gtk.entryGetText nombreArchivoEntry
+              -- Ahora 'texto' contiene el texto del campo de entrada. Puedes usarlo como quieras.
+              contenido <- readFile $ unpack texto
+              resolver contenido
+              Gtk.imageSetFromFile resultadoImage (Just "./src-exe/output.svg")
+
 
           Gtk.on window #destroy Gtk.mainQuit
 

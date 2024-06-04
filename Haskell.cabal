@@ -75,7 +75,8 @@ executable haskell
                        cabal-install,
                        random,
                        mtl,
-                       monad-par
+                       monad-par,
+                       deepseq
                        
 
   -- Directories containing source files.
