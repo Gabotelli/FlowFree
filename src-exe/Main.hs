@@ -46,13 +46,16 @@ intToColor 14 = White
 intToColor _ = Black -- Consideramos cualquier otro número como negro
 
 -- Función para dibujar una casilla
-cell :: Int -> Double -> Diagram B
-cell num size =
-  (if num /= 0 then text (show num) # fontSizeL fontSize else mempty)
-    <> square squareSize # lw none # fc (colorToColor (intToColor num))
+cell :: Int -> Int -> Double -> Diagram B
+cell num old size =
+  let
+    squareDiagram = square squareSize # lw (local 0.02) # lc black # fc (colorToColor (intToColor num))
+    textDiagram = if num /= 0 && old /= 0 then text (show num) # fontSizeL fontSize # centerX # centerY else mempty
+  in
+    textDiagram <> squareDiagram
   where
-    squareSize = size / fromIntegral boardSize
-    fontSize = min (squareSize / 2) 0.5
+    squareSize = size
+    fontSize = squareSize / 2
 
 -- Función para convertir un Color1 a un Color
 colorToColor :: Color1 -> Colour Double
@@ -73,19 +76,20 @@ colorToColor Coral = coral
 colorToColor White = white
 
 -- Función para dibujar una fila de casillas
-row :: [Int] -> Double -> Diagram B
-row nums size = hcat (map (\n -> cell n size) nums)
+row :: [Int] -> [Int] -> Double -> Diagram B
+row nums old size = hcat (zipWith (\n1 n2 -> cell n1 n2 size) nums old)
 
 -- Función para obtener el tamaño del tablero
 boardSize :: Int
 --boardSize = length exampleBoard
-boardSize = 16
+boardSize = 10
 
 -- Función para dibujar un tablero completo
-board :: [[Int]] -> Diagram B
-board nums = vcat (map (\r -> row r size) nums)
+board :: [[Int]] -> [[Int]] -> Diagram B
+--board nums = vcat (map (\r -> row r size) nums)
+board nums old = vcat (zipWith (\r1 r2 -> row r1 r2 (fromIntegral size)) nums old)
   where
-    size = 10 -- tamaño base del tablero
+    size = length nums -- tamaño base del tablero
 
 fillRandom :: [[Int]] -> IO [[Int]]
 fillRandom = mapM (mapM fillCell)
@@ -291,7 +295,7 @@ resolver tab = do
           solutionIO <- convertirAIO solution
           --solution <- splitEvery numFilas (colorMatrix (solucionAgrupada))
           --print (solution)
-          mainWith (board solutionIO)
+          mainWith (board solutionIO (listaArray tablero))
 
 main :: IO ()
 main = do
