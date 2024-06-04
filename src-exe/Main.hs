@@ -19,7 +19,7 @@ import Diagrams.Prelude
 import System.Random (randomRIO)
 import Control.Monad.State
 import Surely (solve)
-import Data.Text (unpack, pack)
+import Data.Text (unpack, pack, Text)
 import System.IO
 import Control.DeepSeq (deepseq)
 
@@ -297,6 +297,13 @@ resolver tab = do
           --print (solution)
           mainWith (board solutionIO (listaArray tablero))
 
+comparar :: [[Text]] -> [[Int]] -> IO()
+comparar m n = do
+    let m' = map (map (read . unpack)) m
+    if m' == n
+        then putStrLn "Las matrices son iguales."
+        else putStrLn "Las matrices no son iguales."
+
 main :: IO ()
 main = do
           Gtk.init Nothing
@@ -316,8 +323,114 @@ main = do
               Just obj -> Gtk.unsafeCastTo Gtk.Image obj
           windowObj <- Gtk.builderGetObject builder "FlowFree"
           window <- case windowObj of
-            Nothing -> error "No se pudo encontrar el objeto 'App'"
-            Just obj -> Gtk.unsafeCastTo Gtk.Window obj
+              Nothing -> error "No se pudo encontrar el objeto 'App'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Window obj
+          c115x5EntryObj <- Gtk.builderGetObject builder "c115x5"
+          c115x5Entry <- case c115x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c115x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c125x5EntryObj <- Gtk.builderGetObject builder "c125x5"
+          c125x5Entry <- case c125x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c125x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c135x5EntryObj <- Gtk.builderGetObject builder "c135x5"
+          c135x5Entry <- case c135x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c135x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c145x5EntryObj <- Gtk.builderGetObject builder "c145x5"
+          c145x5Entry <- case c145x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c145x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c155x5EntryObj <- Gtk.builderGetObject builder "c155x5"
+          c155x5Entry <- case c155x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c155x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c215x5EntryObj <- Gtk.builderGetObject builder "c215x5"
+          c215x5Entry <- case c215x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c215x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c225x5EntryObj <- Gtk.builderGetObject builder "c225x5"
+          c225x5Entry <- case c225x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c225x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c235x5EntryObj <- Gtk.builderGetObject builder "c235x5"
+          c235x5Entry <- case c235x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c235x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c245x5EntryObj <- Gtk.builderGetObject builder "c245x5"
+          c245x5Entry <- case c245x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c245x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c255x5EntryObj <- Gtk.builderGetObject builder "c255x5"
+          c255x5Entry <- case c255x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c255x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c315x5EntryObj <- Gtk.builderGetObject builder "c315x5"
+          c315x5Entry <- case c315x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c315x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c325x5EntryObj <- Gtk.builderGetObject builder "c325x5"
+          c325x5Entry <- case c325x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c325x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c335x5EntryObj <- Gtk.builderGetObject builder "c335x5"
+          c335x5Entry <- case c335x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c335x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c345x5EntryObj <- Gtk.builderGetObject builder "c345x5"
+          c345x5Entry <- case c345x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c345x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c355x5EntryObj <- Gtk.builderGetObject builder "c355x5"
+          c355x5Entry <- case c355x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c355x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c415x5EntryObj <- Gtk.builderGetObject builder "c415x5"
+          c415x5Entry <- case c415x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c415x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c425x5EntryObj <- Gtk.builderGetObject builder "c425x5"
+          c425x5Entry <- case c425x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c425x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c435x5EntryObj <- Gtk.builderGetObject builder "c435x5"
+          c435x5Entry <- case c435x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c435x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c445x5EntryObj <- Gtk.builderGetObject builder "c445x5"
+          c445x5Entry <- case c445x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c445x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c455x5EntryObj <- Gtk.builderGetObject builder "c455x5"
+          c455x5Entry <- case c455x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c455x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c515x5EntryObj <- Gtk.builderGetObject builder "c515x5"
+          c515x5Entry <- case c515x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c515x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c525x5EntryObj <- Gtk.builderGetObject builder "c525x5"
+          c525x5Entry <- case c525x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c525x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c535x5EntryObj <- Gtk.builderGetObject builder "c535x5"
+          c535x5Entry <- case c535x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c535x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c545x5EntryObj <- Gtk.builderGetObject builder "c545x5"
+          c545x5Entry <- case c545x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c545x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+          c555x5EntryObj <- Gtk.builderGetObject builder "c555x5"
+          c555x5Entry <- case c555x5EntryObj of
+              Nothing -> error "No se pudo encontrar el objeto 'c555x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Entry obj
+
+          
+          resolver5x5ButtonObj <- Gtk.builderGetObject builder "resolver5x5"
+          resolver5x5Button <- case resolver5x5ButtonObj of
+              Nothing -> error "No se pudo encontrar el objeto 'resolver5x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Button obj
 
           Gtk.on buscarButton #clicked $ do
               texto <- Gtk.entryGetText nombreArchivoEntry
@@ -326,7 +439,41 @@ main = do
               resolver contenido
               Gtk.imageSetFromFile resultadoImage (Just "./src-exe/output.svg")
 
+          Gtk.on resolver5x5Button #clicked $ do
+              c115x5 <- Gtk.entryGetText c115x5Entry
+              c125x5 <- Gtk.entryGetText c125x5Entry
+              c135x5 <- Gtk.entryGetText c135x5Entry
+              c145x5 <- Gtk.entryGetText c145x5Entry
+              c155x5 <- Gtk.entryGetText c155x5Entry
+              c215x5 <- Gtk.entryGetText c215x5Entry
+              c225x5 <- Gtk.entryGetText c225x5Entry
+              c235x5 <- Gtk.entryGetText c235x5Entry
+              c245x5 <- Gtk.entryGetText c245x5Entry
+              c255x5 <- Gtk.entryGetText c255x5Entry
+              c315x5 <- Gtk.entryGetText c315x5Entry
+              c325x5 <- Gtk.entryGetText c325x5Entry
+              c335x5 <- Gtk.entryGetText c335x5Entry
+              c345x5 <- Gtk.entryGetText c345x5Entry
+              c355x5 <- Gtk.entryGetText c355x5Entry
+              c415x5 <- Gtk.entryGetText c415x5Entry
+              c425x5 <- Gtk.entryGetText c425x5Entry
+              c435x5 <- Gtk.entryGetText c435x5Entry
+              c445x5 <- Gtk.entryGetText c445x5Entry
+              c455x5 <- Gtk.entryGetText c455x5Entry
+              c515x5 <- Gtk.entryGetText c515x5Entry
+              c525x5 <- Gtk.entryGetText c525x5Entry
+              c535x5 <- Gtk.entryGetText c535x5Entry
+              c545x5 <- Gtk.entryGetText c545x5Entry
+              c555x5 <- Gtk.entryGetText c555x5Entry
 
+              let m = [[c115x5, c125x5, c135x5, c145x5, c155x5], 
+                      [c215x5, c225x5, c235x5, c245x5, c255x5], 
+                      [c315x5, c325x5, c335x5, c345x5, c355x5], 
+                      [c415x5, c425x5, c435x5, c445x5, c455x5], 
+                      [c515x5, c525x5, c535x5, c545x5, c555x5]]
+
+              comparar m [[1,4,4,2,3],[1,4,5,2,3],[1,4,5,2,3],[1,1,5,2,3],[3,3,3,3,3]]
+              
           Gtk.on window #destroy Gtk.mainQuit
 
           #showAll window
