@@ -6,7 +6,7 @@ Esta aplicación resuelve tableros de FlowFree además de ofrecer 3 tableros par
 
 ## Uso
 
-Para usar la aplicación, debe ejecutar `main.sh` si está en Linux o `main.bat` si está en Windows.
+Para usar la aplicación, debe ejecutar `main.sh`.
 
 Todos los ficheros fuente o recursos se encuentran en la carpeta [src-exe](src-exe/), las demás carpetas contienen archivos de la compilación de la aplicación.
 
