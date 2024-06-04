@@ -82,6 +82,7 @@
                     <property name="height-request">50</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="text" translatable="yes">./src-exe/Juego.txt</property>
                   </object>
                   <packing>
                     <property name="x">100</property>
