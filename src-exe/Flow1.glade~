@@ -134,6 +134,8 @@
                   <object class="GtkStack" id="stack2">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
@@ -579,7 +581,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton">
+                          <object class="GtkButton" id="resolver5x5">
                             <property name="label" translatable="yes">Resolver</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -603,15 +605,25 @@
                       <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <child>
                           <!-- n-columns=6 n-rows=6 -->
                           <object class="GtkGrid">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c116x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -619,9 +631,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c166x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -629,9 +647,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c156x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">3</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -639,9 +665,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c146x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">1</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -649,9 +683,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c136x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -659,9 +699,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c126x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -669,9 +715,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c266x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -679,9 +731,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c366x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -689,9 +747,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c466x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -699,9 +763,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c566x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -709,9 +779,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c666x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -719,9 +795,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c256x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -729,9 +813,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c356x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">5</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -739,9 +831,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c456x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -749,9 +847,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c556x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -759,9 +863,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c656x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -769,9 +879,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c246x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -779,9 +895,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c346x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">4</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -789,9 +913,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c446x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">4</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -799,9 +931,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c546x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -809,9 +947,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c646x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -819,9 +963,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c236x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -829,9 +979,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c336x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">6</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -839,9 +997,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c436x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">6</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -849,9 +1015,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c536x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">5</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -859,9 +1033,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c636x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -869,9 +1049,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c226x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -879,9 +1065,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c326x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -889,9 +1081,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c426x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -899,9 +1097,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c526x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -909,9 +1115,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c626x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -919,9 +1131,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c216x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -929,9 +1147,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c316x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -939,9 +1163,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c416x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">1</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -949,9 +1181,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c516x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">3</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -959,9 +1199,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c616x6">
+                                <property name="width-request">80</property>
+                                <property name="height-request">80</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -976,7 +1222,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton">
+                          <object class="GtkButton" id="resolver6x6">
                             <property name="label" translatable="yes">Resolver</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
@@ -1007,9 +1253,15 @@
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c167x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -1017,9 +1269,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c177x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">6</property>
@@ -1027,9 +1285,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c277x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">6</property>
@@ -1037,9 +1301,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c267x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -1047,9 +1317,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c377x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">6</property>
@@ -1057,9 +1333,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c367x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -1067,9 +1349,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c477x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">6</property>
@@ -1077,9 +1365,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c467x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -1087,9 +1383,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c577x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">6</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">6</property>
@@ -1097,9 +1401,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c567x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">5</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -1107,9 +1419,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c777x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">6</property>
@@ -1117,9 +1435,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c677x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">3</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">6</property>
@@ -1127,9 +1453,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c667x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -1137,9 +1469,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c767x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">5</property>
@@ -1147,9 +1485,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c157x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -1157,9 +1501,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c257x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -1167,9 +1517,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c357x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -1177,9 +1533,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c457x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -1187,9 +1549,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c557x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -1197,9 +1565,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c657x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -1207,9 +1581,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c757x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">4</property>
@@ -1217,9 +1597,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c747x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -1227,9 +1613,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c647x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -1237,9 +1629,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c547x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -1247,9 +1645,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c447x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">4</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -1257,9 +1663,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c347x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">1</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -1267,9 +1681,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c417x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -1277,9 +1697,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c427x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -1287,9 +1713,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c437x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -1297,9 +1729,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c337x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">4</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -1307,9 +1747,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c327x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -1317,9 +1763,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c237x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">5</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -1327,9 +1781,18 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c247x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">2</property>
+                                <property name="xalign">0.5</property>
+                                <property name="caps-lock-warning">False</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -1337,9 +1800,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c147x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">6</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">3</property>
@@ -1347,9 +1818,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c137x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">3</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -1357,9 +1836,17 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c537x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="editable">False</property>
+                                <property name="width-chars">2</property>
+                                <property name="text" translatable="yes">1</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -1367,9 +1854,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c317x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -1377,9 +1870,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c217x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -1387,9 +1886,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c227x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -1397,9 +1902,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c117x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -1407,9 +1918,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c127x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -1417,9 +1934,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c517x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -1427,9 +1950,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c527x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -1437,9 +1966,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c617x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -1447,9 +1982,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c627x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -1457,9 +1998,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c637x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -1467,9 +2014,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c717x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">0</property>
@@ -1477,9 +2030,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c727x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">1</property>
@@ -1487,9 +2046,15 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry">
+                              <object class="GtkEntry" id="c737x7">
+                                <property name="width-request">70</property>
+                                <property name="height-request">70</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">2</property>
+                                <property name="xalign">0.5</property>
                               </object>
                               <packing>
                                 <property name="left-attach">2</property>
@@ -1504,7 +2069,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton">
+                          <object class="GtkButton" id="resolver7x7">
                             <property name="label" translatable="yes">Resolver</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
