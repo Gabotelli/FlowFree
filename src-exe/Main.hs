@@ -25,7 +25,7 @@ import Control.DeepSeq (deepseq)
 
 data Color1 = Black | Red | Blue | Green | Yellow | Purple | Orange | LightBlue | Cyan | Magenta | Pink | Turquoise | Lavender | Coral | White
   deriving (Eq, Show)
--- Los numeros 20 al 34 se reservan para los interiores de los caminos del color n-20
+
 -- Función para convertir un número a un Color1
 intToColor :: Int -> Color1
 intToColor 0 = Black
@@ -90,7 +90,7 @@ board :: [[Int]] -> [[Int]] -> Diagram B
 board nums old = vcat (zipWith (\r1 r2 -> row r1 r2 (fromIntegral size)) nums old)
   where
     size = length nums -- tamaño base del tablero
-
+-- Función para rellenar una matriz con valores aleatorios
 fillRandom :: [[Int]] -> IO [[Int]]
 fillRandom = mapM (mapM fillCell)
   where
@@ -100,7 +100,7 @@ fillRandom = mapM (mapM fillCell)
 -- Función para obtener los vecinos de una celda
 getNeighbors :: [[Int]] -> (Int, Int) -> [Int]
 getNeighbors matrix (i, j) = [matrix !! x !! y | (x, y) <- [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)], x >= 0, y >= 0, x < length matrix, y < length (matrix !! 0)]
-
+-- Comprobar si una matriz es solución del tablero
 checkMatrix2 :: [[Int]] -> [[Int]] -> Bool
 checkMatrix2 matrix1 matrix2 =
   all
@@ -113,16 +113,16 @@ checkMatrix2 matrix1 matrix2 =
           (zip [0 ..] row)
     )
     (zip [0 ..] matrix1)
-
+-- Genera de manera aleatoria posibles soluciones al tablero
 generateValidBoard :: [[Int]] -> Int -> IO [[Int]]
 generateValidBoard matrix count = do
-  putStrLn (show count) -- Imprime un mensaje
+  putStrLn (show count)
   newMatrix <- fillRandom matrix
   if checkMatrix2 matrix newMatrix
     then return newMatrix
     else generateValidBoard matrix (count + 1)
 
-
+-- Recibe un tablero como cadena y lo convierte en una estructura del tipo Array (Int, Int) Int
 parseTablero :: String -> Maybe (Array (Int, Int) Int)
 parseTablero str = do
   let parse = map (map read . words) (filter (not . null) $ lines str) :: [[Int]]
@@ -137,7 +137,7 @@ parseTablero str = do
         then Nothing
         else do
           return $ listArray ((1, 1), (filas, columnas)) tablero_aux
-
+-- Verifica que sea un tablero válido (dos extremos y solo dos y dimensiones correctas)
 esTableroValido :: Array (Int, Int) Int -> Maybe [(Int, (Int, Int), (Int, Int))]
 esTableroValido tablero = do
   let posiciones = sortBy (comparing snd) (filter (\(pos, num) -> num /= 0) (assocs tablero))
@@ -145,25 +145,25 @@ esTableroValido tablero = do
   if (length posiciones <= filas + columnas) && dosVeces (map snd posiciones)
     then Just $ Main.union posiciones
     else Nothing
-
+-- Verifica si en una lista de enteros hay dos veces el mismo número
 dosVeces :: [Int] -> Bool
 dosVeces [] = True
 dosVeces [_] = False
 dosVeces [x, y] = x == y
 dosVeces (x : y : z : l) = x == y && x /= z && dosVeces (z : l)
-
+-- Une dos tuplas en un elemento único
 union :: [((Int, Int), Int)] -> [(Int, (Int, Int), (Int, Int))]
 union [] = []
 union ((pos1, num) : (pos2, _) : x) = (num, pos1, pos2) : Main.union x
-
+-- Convierte un tablero en una lista de listas de enteros
 listaArray :: Array (Int, Int) Int -> [[Int]]
 listaArray tablero = do
   let (filas, columnas) = snd (bounds tablero)
   [[tablero! (x, y) | y <- [1.. columnas]] | x <- [1.. filas]]
-
+-- Función para obtener los vecinos de una celda en un tablero
 vecinos :: (Int, Int) -> Array (Int, Int) Int -> [(Int, Int)]
 vecinos (x, y) tablero = filter (inRange (bounds tablero)) [(x-1, y), (x+1, y), (x, y-1), (x, y+1)]
-
+-- Obtiene todas las clausulas en CNF para una celda en un tablero (colores y tuberias)
 clausulaCelda :: (Int, Int) -> Array (Int, Int) Int -> [[Int]]
 clausulaCelda (x, y) tablero = if esCeldaFinal
                                   then [[celdaFinal]] ++ notOtherColorsClauses ++ [neighborColors] ++ neighborClauses
@@ -244,33 +244,33 @@ clausulaCelda (x, y) tablero = if esCeldaFinal
                         else if (x /= 1 && x /= numFilas && y /= 1 && y /= numFilas) then [[-(pipeClause + 6), -(colorClauses !! i), -((x * numFilas + y - 1) * numFilas + (i+1) - ((numFilas * numFilas) + numFilas))] | i <- [0..numFilas-1]] ++ [[-(pipeClause + 5), -(colorClauses !! i), -((x * numFilas + y + 1) * numFilas + (i+1) - ((numFilas * numFilas) + numFilas))] | i <- [0..numFilas-1]] ++ [[-(pipeClause + 1), -(colorClauses !! i), -(((x + 1) * numFilas + y) * numFilas + (i+1) - ((numFilas * numFilas) + numFilas))] | i <- [0..numFilas-1]] ++
                               [[-(pipeClause + 4), -(colorClauses !! i), -((x * numFilas + y - 1) * numFilas + (i+1) - ((numFilas * numFilas) + numFilas))] | i <- [0..numFilas-1]] ++ [[-(pipeClause + 3), -(colorClauses !! i), -((x * numFilas + y + 1) * numFilas + (i+1) - ((numFilas * numFilas) + numFilas))] | i <- [0..numFilas-1]] ++  [[-(pipeClause + 2), -(colorClauses !! i), -((x * numFilas + (y + 1)) * numFilas + (i+1) - ((numFilas * numFilas) + numFilas))] | i <- [0..numFilas-1]]
                         else []
-
+-- Obtiene las combinaciones de n elementos de una lista
 combinations :: Int -> [a] -> [[a]]
 combinations n xs = filter ((n==) . length) (subsequences xs)
-
-clausulasColor :: Array (Int, Int) Int -> [[Int]]
-clausulasColor tablero = concatMap (\(x, _) -> clausulaCelda x tablero) (assocs tablero)
-
+-- Obtiene las clausulas de todo el tablero
+clausulasColorTub :: Array (Int, Int) Int -> [[Int]]
+clausulasColorTub tablero = concatMap (\(x, _) -> clausulaCelda x tablero) (assocs tablero)
+-- Convierte una matriz de enteros a una matriz de enteros con tamaño variable
 convertirAInteger :: [[Int]] -> [[Integer]]
 convertirAInteger = map (map fromIntegral)
-
+-- Ordena una lista de enteros por su valor absoluto
 ordenarPorValorAbsoluto :: [Int] -> [Int]
 ordenarPorValorAbsoluto = sortOn abs
-
+-- Divide una lista en listas de n elementos
 splitEvery :: Int -> [a] -> [[a]]
 splitEvery _ [] = []
 splitEvery n xs = take n xs : splitEvery n (drop n xs)
-
+-- Obtiene los colores de cada celda a partir de la solucion del SAT
 colorMatrix :: [[Int]] -> [Int]
 colorMatrix xs = map colorCell xs
   where
     colorCell sublist = case findIndex (>0) sublist of
                           Just idx -> idx + 1
                           Nothing  -> error "No positive number found in sublist"
-
+-- Convierte una matriz de enteros en una matriz de enteros de IO
 convertirAIO :: [[Int]] -> IO [[Int]]
 convertirAIO x = return x
-
+-- Función dedicada a la resolución de un tablero mediante un SAT solver
 resolver :: [Char] -> IO()
 resolver tab = do
   let tablero = parseTablero tab
@@ -281,7 +281,7 @@ resolver tab = do
       case tableroValido of
         Nothing -> putStrLn "Tablero inválido"
         Just tableroValido -> do
-          let clausulas = clausulasColor tablero
+          let clausulas = clausulasColorTub tablero
           --print (clausulas)
           let ((_, _), (numFilas, _)) = bounds (tablero)
           let solucion = case solve (convertirAInteger clausulas) of
@@ -296,13 +296,14 @@ resolver tab = do
           --solution <- splitEvery numFilas (colorMatrix (solucionAgrupada))
           --print (solution)
           mainWith (board solutionIO (listaArray tablero))
-
-comparar :: [[Text]] -> [[Int]] -> IO()
-comparar m n = do
+-- Compara si dos matrices son iguales de tipos Text e Int
+comparar :: Gtk.Label -> [[Text]] -> [[Int]] -> IO ()
+comparar b m n = do
     let m' = map (map (read . unpack)) m
     if m' == n
-        then putStrLn "Las matrices son iguales."
-        else putStrLn "Las matrices no son iguales."
+        then Gtk.labelSetText b "Correcto"
+        else Gtk.labelSetText b "Incorrecto" 
+            
 
 main :: IO ()
 main = do
@@ -782,6 +783,20 @@ main = do
               Nothing -> error "No se pudo encontrar el objeto 'resolver7x7'"
               Just obj -> Gtk.unsafeCastTo Gtk.Button obj
 
+          men_5x5LabelObj <- Gtk.builderGetObject builder "men_5x5"
+          men_5x5Label <- case men_5x5LabelObj of
+              Nothing -> error "No se pudo encontrar el objeto'men_5x5'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Label obj
+          men_6x6LabelObj <- Gtk.builderGetObject builder "men_6x6"
+          men_6x6Label <- case men_6x6LabelObj of
+              Nothing -> error "No se pudo encontrar el objeto'men_6x6'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Label obj
+          men_7x7LabelObj <- Gtk.builderGetObject builder "men_7x7"
+          men_7x7Label <- case men_7x7LabelObj of
+              Nothing -> error "No se pudo encontrar el objeto'men_7x7'"
+              Just obj -> Gtk.unsafeCastTo Gtk.Label obj
+
+
           Gtk.on buscarButton #clicked $ do
               texto <- Gtk.entryGetText nombreArchivoEntry
               -- Ahora 'texto' contiene el texto del campo de entrada. Puedes usarlo como quieras.
@@ -822,7 +837,7 @@ main = do
                       [c415x5, c425x5, c435x5, c445x5, c455x5], 
                       [c515x5, c525x5, c535x5, c545x5, c555x5]]
 
-              comparar m1 [[1,4,4,2,3],[1,4,5,2,3],[1,4,5,2,3],[1,1,5,2,3],[3,3,3,3,3]]
+              comparar men_5x5Label m1 [[1,4,4,2,3],[1,4,5,2,3],[1,4,5,2,3],[1,1,5,2,3],[3,3,3,3,3]]
 
           Gtk.on resolver6x6Button #clicked $ do
               c116x6 <- Gtk.entryGetText c116x6Entry
@@ -869,7 +884,7 @@ main = do
                       [c516x6, c526x6, c536x6, c546x6, c556x6, c566x6],
                       [c616x6, c626x6, c636x6, c646x6, c656x6, c666x6]]
 
-              comparar m2 [[1,1,1,1,3,3],[1,2,2,2,2,3],[1,2,6,4,5,3],[1,2,6,4,5,3],[3,2,5,5,5,3],[3,3,3,3,3,3]]
+              comparar men_6x6Label m2 [[1,1,1,1,3,3],[1,2,2,2,2,3],[1,2,6,4,5,3],[1,2,6,4,5,3],[3,2,5,5,5,3],[3,3,3,3,3,3]]
             
           Gtk.on resolver7x7Button #clicked $ do
             c117x7 <- Gtk.entryGetText c117x7Entry
@@ -930,8 +945,7 @@ main = do
                     [c617x7, c627x7, c637x7, c647x7, c657x7, c667x7, c677x7],
                     [c717x7, c727x7, c737x7, c747x7, c757x7, c767x7, c777x7]]
                 
-            comparar m3 [[3,3,3,6,6,6,6],[3,5,5,2,2,2,6],[3,5,4,1,1,2,6],[3,5,4,4,1,2,6],[3,5,1,1,1,5,6],[3,5,5,5,5,5,3],[3,3,3,3,3,3,3]]
-
+            comparar men_7x7Label m3 [[3,3,3,6,6,6,6],[3,5,5,2,2,2,6],[3,5,4,1,1,2,6],[3,5,4,4,1,2,6],[3,5,1,1,1,5,6],[3,5,5,5,5,5,3],[3,3,3,3,3,3,3]]
            
           Gtk.on window #destroy Gtk.mainQuit
 
