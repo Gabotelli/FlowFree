@@ -1,34 +1,27 @@
-# Aplicación FlowFree
+# FlowFree: SAT-based puzzle solver
 
-Esta aplicación resuelve tableros de FlowFree además de ofrecer 3 tableros para que el usuario juegue.
+A desktop application for solving FlowFree boards and playing three included boards. The solver encodes the puzzle as a Boolean satisfiability (SAT) problem and uses the Haskell solver [Surely](https://github.com/gatlin/surely). The encoding was inspired by [Matt Zucker's discussion of Flow Free and SAT](https://mzucker.github.io/2016/09/02/eating-sat-flavored-crow.html).
 
-![Menu](src-exe/menu.png)
+This is a joint project by **Gabriel Suárez and Ángela Gutiérrez**. The repository contains the Haskell application and board parser, a GTK interface, and C resources. It does not establish a separate authorship breakdown for individual components.
 
-## Uso
+## Structure
 
-Para usar la aplicación, debe ejecutar `main.sh`.
+- `src-exe/Main.hs`: application logic, board handling and GTK interface.
+- `src-exe/Surely.hs`: SAT solver code used by the application; credit belongs to the upstream Surely project.
+- `src-exe/Flow1.glade`: GTK interface definition.
+- `csrc/resources.c`: compiled UI resources.
+- `Haskell.cabal`: package dependencies and executable definition.
+- `src-exe/ejemploTablero.png`: illustration of the board input format.
 
-Todos los ficheros fuente o recursos se encuentran en la carpeta [src-exe](src-exe/), las demás carpetas contienen archivos de la compilación de la aplicación.
+## Build and run
 
-Para resolver un tablero, deberá especificar la ruta de un fichero con un tablero con el siguiente formato:
+The project uses Cabal and GTK development libraries. From the repository root, try:
 
-![Formato de tablero](src-exe/ejemploTablero.png)
+```bash
+cabal v2-build
+cabal v2-run haskell -- -o ./src-exe/output.svg -w 400
+```
 
-Una vez lo haya indicado, solo presione el botón de Buscar.
+The included `main.sh` and `run.sh` call a build output under a hard-coded Linux/GHC 8.8.4 path. They may need adaptation on another machine; the commands above reflect the Cabal executable declared in `Haskell.cabal` and have not been verified on a clean system. `dist-newstyle/` currently contains committed build artifacts.
 
-![Resolver](src-exe/resolver.png)
-
-Para jugar, debe escribir en la celda el número que corresponde con el color que desea colocar. Una vez haya terminado, presione el botón de Resolver situado a la derecha del tablero para ver si la solución es correcta.
-
-![Jugar](src-exe/jugar.png)
-
-## Método de resolución
-
-Para resolver un tablero de FlowFree se ha optado por modelar el juego como un Problema de satisfacibilidad booleana (SAT) para luego usar un solucionador existente de este problema. Tomamos inspiración del blog [Flow Free redux: eating SAT-flavored crow](https://mzucker.github.io/2016/09/02/eating-sat-flavored-crow.html) de Matt Zucker para abordar la modelización del problema y usamos el solucionador SAT en Haskell [Surely](https://github.com/gatlin/surely/tree/master) de Gatlin Johnson
-
-## Autores
-
-Este proyecto ha sido realizado por:
-
-- Gabriel Suárez
-- Ángela Gutiérrez
+In the interface, select a board file to solve it, or enter color numbers into the cells of one of the playable boards and use the check control. See the [menu](src-exe/menu.png) and [solver view](src-exe/resolver.png).
