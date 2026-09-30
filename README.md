@@ -19,9 +19,11 @@ The project uses Cabal and GTK development libraries. From the repository root, 
 
 ```bash
 cabal v2-build
-cabal v2-run haskell -- -o ./src-exe/output.svg -w 400
+cabal v2-run exe:haskell -- -o ./src-exe/output.svg -w 400
 ```
 
-The included `main.sh` and `run.sh` call a build output under a hard-coded Linux/GHC 8.8.4 path. They may need adaptation on another machine; the commands above reflect the Cabal executable declared in `Haskell.cabal` and have not been verified on a clean system. Tracked `dist-newstyle/` build artifacts have been removed, and all directories with that name are now ignored. The launch scripts remain unchanged pending a verified portability update.
+Both launch scripts now use `cabal v2-run exe:haskell -- -o ./src-exe/output.svg -w 400`, so Cabal locates/builds the executable declared in `Haskell.cabal`. They first switch to the project root because GTK loads `src-exe/Flow1.glade` relative to that directory. Additional command-line arguments are forwarded. Run either with `bash main.sh` or `bash run.sh`.
+
+Shell syntax and root-directory/argument forwarding have been checked. GHC, Cabal and GTK are not installed in the verification environment, so a clean application build/run remains unverified. Tracked `dist-newstyle/` build artifacts have been removed, and all directories with that name are ignored.
 
 In the interface, select a board file to solve it, or enter color numbers into the cells of one of the playable boards and use the check control. See the [menu](src-exe/menu.png) and [solver view](src-exe/resolver.png).

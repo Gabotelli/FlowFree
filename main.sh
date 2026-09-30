@@ -1,3 +1,6 @@
-#!/bin/bash
-cabal v2-build
-./dist-newstyle/build/x86_64-linux/ghc-8.8.4/haskell-0.1.0.0/x/haskell/build/haskell/haskell -o ./src-exe/output.svg -w 400
+#!/usr/bin/env bash
+set -euo pipefail
+
+# GTK loads src-exe/Flow1.glade relative to the project root.
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
+exec cabal v2-run exe:haskell -- -o ./src-exe/output.svg -w 400 "$@"
