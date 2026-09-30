@@ -22,6 +22,6 @@ cabal v2-build
 cabal v2-run haskell -- -o ./src-exe/output.svg -w 400
 ```
 
-The included `main.sh` and `run.sh` call a build output under a hard-coded Linux/GHC 8.8.4 path. They may need adaptation on another machine; the commands above reflect the Cabal executable declared in `Haskell.cabal` and have not been verified on a clean system. `dist-newstyle/` currently contains committed build artifacts.
+The included `main.sh` and `run.sh` call a build output under a hard-coded Linux/GHC 8.8.4 path. They may need adaptation on another machine; the commands above reflect the Cabal executable declared in `Haskell.cabal` and have not been verified on a clean system. Tracked `dist-newstyle/` build artifacts have been removed, and all directories with that name are now ignored. The launch scripts remain unchanged pending a verified portability update.
 
 In the interface, select a board file to solve it, or enter color numbers into the cells of one of the playable boards and use the check control. See the [menu](src-exe/menu.png) and [solver view](src-exe/resolver.png).
